@@ -6,11 +6,18 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 03:24:28 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/23 12:06:35 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/25 19:19:42 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
 void	chkdigit(char *to_test)
 {
 	int	i;
@@ -22,8 +29,7 @@ void	chkdigit(char *to_test)
 			return ;
 		i++;
 	}
-	write(2, "Error\n", 6);
-	exit(1);
+	ft_error();
 }
 
 int	*check_args(char **args, int len)
@@ -42,26 +48,26 @@ int	*check_args(char **args, int len)
 	return (arr);
 }
 
-int	*parcing(int* ac, char **av)
+int	*parcing(int *ac, char **av)
 {
 	char	**args;
 	char	*tmp;
 	char	*nums;
 	int	i;
 
-	i = 1;
 	nums = NULL;
+	i = 0;
+	while (av[i])
+	{
+		chkdigit(av[i]);
+		i++;
+	}
+	i = 1;
 	while (i <= *ac)
 	{
 		tmp = nums;
 		nums = ft_strjoin(tmp, av[i]);
 		free(tmp);
-		i++;
-	}
-	i = 0;
-	while (av[i])
-	{
-		chkdigit(av[i]);
 		i++;
 	}
 	args = ft_split(nums, ' ', &i);

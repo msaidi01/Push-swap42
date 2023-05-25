@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 03:10:27 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/23 12:08:35 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/25 19:20:29 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	check_doubles(int ac, int *arr)
 		while (j < ac - 1 && arr[i] != arr[j])
 			j++;
 		if (arr[i] == arr[j])
-		{
-			write(2, "Error\n", 7);
-			exit(1);
-		}
+			ft_error();
 		if (arr[i] > arr[i + 1])
 			k = 0;
 		i++;

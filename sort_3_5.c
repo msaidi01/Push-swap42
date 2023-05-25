@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:51:21 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/23 11:22:35 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/25 19:20:55 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,4 @@ void	sort_5(t_list **stack_a, t_list **stack_b)
 	sort_3(stack_a);
 	while (*stack_b)
 		pa(stack_a, stack_b);
-	
 }

@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 03:08:24 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/22 14:04:04 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/25 19:19:50 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	sort_3(t_list **stack);
 void	sort_5(t_list **stack_a, t_list **stack_b);
 void	sorting_algo(t_list **stack_a, t_list **stack_b);
 int		position(t_list	**stack, int i);
+void	ft_error(void);
 // void	ft_lstclear(t_list **lst, void (*del)(void *));
 int	ft_lstsize(t_list *lst);
 
