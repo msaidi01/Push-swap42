@@ -6,15 +6,16 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:51:21 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/25 19:20:55 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/27 19:17:56 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 int	ft_max(t_list **stack)
 {
 	t_list	*tmp;
-	int	i;
+	int		i;
 
 	tmp = (*stack);
 	i = tmp->index;
@@ -44,7 +45,7 @@ void	sort_3(t_list **stack)
 int	position(t_list	**stack, int i)
 {
 	t_list	*tmp;
-	int	pos;
+	int		pos;
 
 	pos = 1;
 	tmp = *stack;

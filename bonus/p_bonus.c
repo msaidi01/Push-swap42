@@ -1,46 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   p_bonus.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 18:25:54 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/25 19:28:52 by msaidi           ###   ########.fr       */
+/*   Created: 2023/05/18 19:30:14 by msaidi            #+#    #+#             */
+/*   Updated: 2023/05/27 17:20:31 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	reverse_rot(t_list	**stack)
+void	push_ft(t_list **stack_1, t_list **stack_2)
 {
 	t_list	*tmp;
-	int	i;
 
-	i = ft_lstsize(*stack);
-	tmp = ft_lstlast(*stack);
-	tmp->next = *stack;
-	*stack = tmp;
-	while(i > 1)
+	if ((*stack_1))
 	{
-		tmp = tmp->next;
-		i--;
+		tmp = (*stack_1);
+		if (!(*stack_1)->next)
+			(*stack_1) = NULL;
+		else
+		(*stack_1) = (*stack_1)->next;
+		tmp->next = (*stack_2);
+		*stack_2 = tmp;
 	}
-	tmp->next = NULL;
 }
 
-void	rra(t_list	**stack_a)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
-	reverse_rot(stack_a);
+	push_ft(stack_b, stack_a);
 }
 
-void	rrb(t_list **stack_b)
+void	pb(t_list **stack_a, t_list	**stack_b)
 {
-	reverse_rot(stack_b);
-}
-
-void	rrr(t_list **stack_a, t_list **stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	push_ft(stack_a, stack_b);
 }

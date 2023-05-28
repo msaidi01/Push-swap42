@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s.c                                                :+:      :+:    :+:   */
+/*   s_bonus.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:50:56 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/21 11:19:21 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/27 17:05:21 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	swap(t_list	**nums)
 {
@@ -26,26 +26,21 @@ void	swap(t_list	**nums)
 
 void	sa(t_list **nums)
 {
-	if ((*nums)->next)
-	{
+	if (ft_lstsize(*nums) >= 2)
 		swap(nums);
-		write(1, "sa\n", 3);
-	}
 }
 
 void	sb(t_list **nums)
 {
-	if ((*nums)->next)
-	{
+	if (ft_lstsize(*nums) >= 2)
 		swap(nums);
-		write(1, "sb\n", 3);
-	}
 }
 
 void	ss(t_list **stack_a, t_list	**stack_b)
 {
-	if ((*stack_a)->next && (*stack_b)->next)
-	sa(stack_a);
-	sb(stack_b);
-	write(1, "ss\n", 3);
+	if (ft_lstsize(*stack_a) >= 2 && ft_lstsize(*stack_b) >= 2)
+	{
+		sa(stack_a);
+		sb(stack_b);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 03:24:28 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/25 19:19:42 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/26 17:39:49 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	*check_args(char **args, int len)
 	int	i;
 
 	i = 0;
-
 	arr = malloc(sizeof(int *) * len);
 	while (i < len)
 	{
@@ -53,7 +52,7 @@ int	*parcing(int *ac, char **av)
 	char	**args;
 	char	*tmp;
 	char	*nums;
-	int	i;
+	int		i;
 
 	nums = NULL;
 	i = 0;

@@ -1,45 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   rr_bonus.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 17:47:37 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/25 19:29:02 by msaidi           ###   ########.fr       */
+/*   Created: 2023/05/18 18:25:54 by msaidi            #+#    #+#             */
+/*   Updated: 2023/05/27 17:05:35 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void    rotation_ft(t_list **stack)
+void	reverse_rot(t_list	**stack)
 {
 	t_list	*tmp;
-	
-	if (!(*stack))
-		return ;
+	int		i;
+
+	i = ft_lstsize(*stack);
 	tmp = ft_lstlast(*stack);
-	tmp->next = (*stack);
-	(*stack) = (*stack)->next;
-	tmp->next->next = NULL;
-}
-void	ra(t_list **stack_a)
-{
-	if ((*stack_a)->next)
-		rotation_ft(stack_a);
-}
-
-void	rb(t_list **stack_b)
-{
-	if ((*stack_b)->index)
-		rotation_ft(stack_b);
-}
-
-void	rr(t_list **stack_a, t_list **stack_b)
-{
-	if ((*stack_a)->next && (*stack_b)->next)
+	tmp->next = *stack;
+	*stack = tmp;
+	while (i > 1)
 	{
-		rotation_ft(stack_a);
-		rotation_ft(stack_b);
+		tmp = tmp->next;
+		i--;
+	}
+	tmp->next = NULL;
+}
+
+void	rra(t_list	**stack_a)
+{
+	if (ft_lstsize(*stack_a) >= 2)
+		reverse_rot(stack_a);
+}
+
+void	rrb(t_list **stack_b)
+{
+	if (ft_lstsize(*stack_b) >= 2)
+		reverse_rot(stack_b);
+}
+
+void	rrr(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_lstsize(*stack_a) >= 2 && ft_lstsize(*stack_b) >= 2)
+	{
+		rra(stack_a);
+		rrb(stack_b);
 	}
 }

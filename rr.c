@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 18:25:54 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/22 14:04:48 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/27 19:18:14 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	reverse_rot(t_list	**stack)
 {
 	t_list	*tmp;
-	int	i;
+	int		i;
 
 	i = ft_lstsize(*stack);
 	tmp = ft_lstlast(*stack);
 	tmp->next = *stack;
 	*stack = tmp;
-	while(i > 1)
+	while (i > 1)
 	{
 		tmp = tmp->next;
 		i--;

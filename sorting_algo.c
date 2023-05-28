@@ -6,13 +6,13 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 02:32:38 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/24 12:52:28 by msaidi           ###   ########.fr       */
+/*   Updated: 2023/05/27 19:17:20 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	to_stackB(t_list **stack_a, t_list **stack_b, int pvt1, int pvt2)
+void	to_stack_b(t_list **stack_a, t_list **stack_b, int pvt1, int pvt2)
 {
 	while (ft_lstsize(*stack_a) > 3)
 	{
@@ -33,7 +33,7 @@ void	to_stackB(t_list **stack_a, t_list **stack_b, int pvt1, int pvt2)
 	}
 }
 
-int	pushingTheSmallest(t_list **stack_a, t_list **stack_b, int flag)
+int	pushing_from_the_top(t_list **stack_a, t_list **stack_b, int flag)
 {
 	while ((*stack_b)->index != (*stack_a)->index - 1)
 	{
@@ -43,13 +43,14 @@ int	pushingTheSmallest(t_list **stack_a, t_list **stack_b, int flag)
 			ra(stack_a);
 			flag = 1;
 		}
-		else 
+		else
 			rb(stack_b);
 	}
 	pa(stack_a, stack_b);
 	return (flag);
 }
-int	pushingTheBigest(t_list **stack_a, t_list **stack_b, int flag)
+
+int	pushing_from_the_bot(t_list **stack_a, t_list **stack_b, int flag)
 {
 	while ((*stack_b)->index != (*stack_a)->index - 1)
 	{
@@ -59,13 +60,14 @@ int	pushingTheBigest(t_list **stack_a, t_list **stack_b, int flag)
 			ra(stack_a);
 			flag = 1;
 		}
-		else 
+		else
 			rrb(stack_b);
 	}
 	pa(stack_a, stack_b);
 	return (flag);
 }
-void	to_stackA(t_list **stack_a, t_list **stack_b, int flag)
+
+void	to_stack_a(t_list **stack_a, t_list **stack_b, int flag)
 {
 	while (*stack_b)
 	{
@@ -76,16 +78,19 @@ void	to_stackA(t_list **stack_a, t_list **stack_b, int flag)
 			rrb(stack_b);
 			pa(stack_a, stack_b);
 		}
-		else if (position(stack_b, (*stack_a)->index - 1) <= ft_lstsize(*stack_b) / 2)
-			flag = pushingTheSmallest(stack_a, stack_b, flag);
-		else if (position(stack_b, (*stack_a)->index - 1) > ft_lstsize(*stack_b) / 2)
-			flag = pushingTheBigest(stack_a, stack_b, flag);
+		else if (position(stack_b,
+				(*stack_a)->index - 1) <= ft_lstsize(*stack_b) / 2)
+			flag = pushing_from_the_top(stack_a, stack_b, flag);
+		else if (position(stack_b,
+				(*stack_a)->index - 1) > ft_lstsize(*stack_b) / 2)
+			flag = pushing_from_the_bot(stack_a, stack_b, flag);
 		while (ft_lstlast(*stack_a)->index == (*stack_a)->index - 1)
 			rra(stack_a);
 		if (ft_lstlast(*stack_a)->index > (*stack_a)->index)
 			flag = 0;
-	} 
+	}
 }
+
 void	sorting_algo(t_list **stack_a, t_list **stack_b)
 {
 	int	pvt1;
@@ -95,7 +100,7 @@ void	sorting_algo(t_list **stack_a, t_list **stack_b)
 	flag = 0;
 	pvt2 = ft_lstsize(*stack_a) / 6;
 	pvt1 = ft_lstsize(*stack_a) / 3;
-	to_stackB(stack_a, stack_b, pvt1, pvt2);
+	to_stack_b(stack_a, stack_b, pvt1, pvt2);
 	sort_3(stack_a);
-	to_stackA(stack_a, stack_b, flag);
+	to_stack_a(stack_a, stack_b, flag);
 }

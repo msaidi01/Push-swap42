@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p.c                                                :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 19:30:14 by msaidi            #+#    #+#             */
-/*   Updated: 2023/05/25 19:27:11 by msaidi           ###   ########.fr       */
+/*   Created: 2022/10/06 18:56:52 by msaidi            #+#    #+#             */
+/*   Updated: 2023/05/26 11:35:36 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	push_ft(t_list **stack_1, t_list **stack_2)
+void	ft_error(void)
 {
-	t_list	*tmp;
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
-	tmp = (*stack_1);
-	if (!(*stack_1)->next)
+int	ft_atoi(const char *n)
+{
+	int		i;
+	long	r;
+	int		s;
+
+	i = 0;
+	r = 0;
+	s = 1;
+	if ((n[i] == '+' || n[i] == '-') && (n[i + 1] >= '0' && n[i + 1] <= '9'))
 	{
-		(*stack_1) = NULL;
+		if (n[i] == '-')
+			s *= (-1);
+		i++;
 	}
-	else
-	(*stack_1) = (*stack_1)->next;
-	tmp->next = (*stack_2);
-	*stack_2 = tmp;
-}
-
-void	pa(t_list **stack_a, t_list **stack_b)
-{
-	push_ft(stack_b, stack_a);
-}
-
-void	pb(t_list **stack_a, t_list	**stack_b)
-{
-	push_ft(stack_a, stack_b);
+	while (n[i] >= '0' && n[i] <= '9')
+		r = r * 10 + (n[i++] - '0');
+	if (n[i])
+		ft_error();
+	r = r * s;
+	if (r < -2147483648 || r > 2147483647)
+		ft_error();
+	return (r);
 }
